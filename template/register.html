@@ -1,0 +1,113 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-content padding-y">
+
+<!-- ============================ COMPONENT REGISTER   ================================= -->
+
+
+{% if not model %}
+
+<div class="card mx-auto" style="max-width:520px; margin-top:40px;">
+	<article class="card-body">
+	  <header class="mb-4"><h4 class="card-title">Sign up</h4></header>
+	  <form method="POST">{% csrf_token %}
+			  <div class="form-row">
+				  <div class="col form-group">
+					  <label>First name</label>
+						<input name="first_name" type="text" class="form-control" placeholder="">
+				  </div> <!-- form-group end.// -->
+				  <div class="col form-group">
+					  <label>Last name</label>
+						<input name="last_name" type="text" class="form-control" placeholder="">
+				  </div> <!-- form-group end.// -->
+			  </div> <!-- form-row end.// -->
+			  <div class="form-group">
+				  <label>Phone number</label>
+				  <input type="text" name="phone_number" class="form-control" placeholder="99890 512 54 34">
+				  <small class="form-text text-muted">Raqamdan oldin " + " qo`ymang</small>
+			  </div> <!-- form-group end.// -->
+			  
+			  <div class="form-row">
+				  <div class="form-group col-md-6">
+					<label>Home</label>
+					<input name="city" type="text" class="form-control">
+				  </div> <!-- form-group end.// -->
+				  <div class="form-group col-md-6">
+					<label>City</label>
+					<select name="city1" id="inputState" class="form-control">
+					  <option> Choose...</option>
+						<option selected="">Tashkent</option>
+						<option>Buxara</option>
+						<option>Samarkand</option>
+						<option>Navoiy</option>
+						<option>Andijon</option>
+						<option>Fargona</option>
+						<option>Namangan</option>
+						<option>Jizzah</option>
+					</select>
+				  </div> <!-- form-group end.// -->
+			  </div> <!-- form-row.// -->
+			  <div class="form-row">
+				  <div class="form-group col-md-6">
+					  <label>Create password</label>
+					  <input name="password1" class="form-control" type="password">
+				  </div> <!-- form-group end.// --> 
+				  <div class="form-group col-md-6">
+					  <label>Repeat password</label>
+					  <input name="password2" class="form-control" type="password">
+				  </div> <!-- form-group end.// -->  
+			  </div>
+			  <div class="form-group">
+				  <button type="submit" class="btn btn-primary btn-block"> Register  </button>
+			  </div> <!-- form-group// -->      
+				  
+		  </form>
+	  </article><!-- card-body.// -->
+  </div> <!-- card .// -->
+  <p class="text-center mt-4">Have an account? <a href="">Log In</a></p>
+  <br><br>
+
+{% endif %}
+
+	<!-- ---------------------------------------------===------------------------ -->
+	{% if model %}
+	<div class="d-grid gap-2 col-3 mx-auto " >
+		<h1>Parol yuborildi :</h1>
+
+		<button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Code register</button>
+		<br><br><br><br><br><br><br>
+	</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+		  <div class="modal-content">
+			
+			<div class="modal-body">
+			  <form method="POST">{% csrf_token %}
+
+				<div class="mb-3">
+				  <label for="recipient-name" class="col-form-label">Code:</label>
+				  <input type="text" name="code" class="form-control" placeholder="# # # #" id="recipient-name">
+
+				</div>
+				
+			  
+			</div>
+			<div class="modal-footer">
+			  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+			  <button type="submit" class="btn btn-primary">Send</button>
+			</div>
+			</form>
+		  </div>
+		</div>
+	  </div>
+	  {% endif %}
+<!-- ============================ COMPONENT REGISTER  END.// ================================= -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
+</section>
+
+{% endblock %}
